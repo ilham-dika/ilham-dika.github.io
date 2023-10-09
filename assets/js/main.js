@@ -14,9 +14,9 @@
     /**
      * Easy event listener function
      */
-    const on = (type, el, listener, all = fasle) => {
+    const on = (type, el, listener, all = false) => {
         if (all) {
-            select(el, all).forEach(e=> e,addEventListener(type, listener))
+            select(el, all).forEach(e=> e.addEventListener(type, listener))
         } else {
             select(el, all).addEventListener(type, listener)
         }
@@ -50,7 +50,7 @@
      * Scrolls to an element with header offset
      */
     const scrollto = (el) => {
-        let header = select ('#header')
+        let header = select('#header')
         let offset = header.offsetHeight
 
         if (!header.classList.contains('header-scrolled')) {
@@ -119,7 +119,7 @@
             let navbar = select('#navbar')
             if (navbar.classList.contains('navbar-mobile')) {
                 navbar.classList.remove('navbar-mobile')
-                let navbarToggle = select('/mobile-nav-toggle')
+                let navbarToggle = select('.mobile-nav-toggle')
                 navbarToggle.classList.toggle('bi-list')
                 navbarToggle.classList.toggle('bi-x')
             }
@@ -177,7 +177,7 @@
     window.addEventListener('load', () => {
         let portfolioContainer = select('.portfolio-container');
         if (portfolioContainer) {
-            let portfolioContainer = new Isotope(portfolioContainer, {
+            let portfolioIsotope = new Isotope(portfolioContainer, {
                 itemSelector: '.portfolio-item',
                 layoutMode: 'fitRows'
             });
